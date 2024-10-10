@@ -54,7 +54,7 @@ func TestServerPort(p int, m string) (b bool) {
 func GenerateServerPort(m string) int {
 	for {
 		//生成随机数 1024 - 65535
-		serverPort := rand.Intn(65535)
+		serverPort := rand.Intn(10000) + 20000
 		if serverPort < 1024 {
 			serverPort = 1024
 		}
