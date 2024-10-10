@@ -7,6 +7,7 @@ import (
 	"ehang.io/nps/server"
 	"github.com/astaxie/beego"
 	"strings"
+	"strconv"
 )
 
 type ClientController struct {
