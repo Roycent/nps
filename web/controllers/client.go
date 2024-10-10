@@ -43,8 +43,18 @@ func (s *ClientController) Add() {
 		s.Data["menu"] = "client"
 		s.SetInfo("add client")
 		s.display()
-	} else {
-		id := int(file.GetDb().JsonDb.GetClientId())
+	} else {		
+		var id int
+		if s.getEscapeString("id") != "" {
+			_id, err := strconv.Atoi(s.getEscapeString("id"))
+			if err != nil {
+				s.AjaxErr(err.Error())
+			} else {
+				id = _id
+			}
+		} else {
+			id = int(file.GetDb().JsonDb.GetClientId())
+		}
 		t := &file.Client{
 			VerifyKey: s.getEscapeString("vkey"),
 			Id:        id,
